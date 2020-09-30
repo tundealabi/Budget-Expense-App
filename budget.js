@@ -40,6 +40,7 @@ let id = 0;
 let details = [];
 
 function getBudgetAmount(amount) {
+  
   if (!amount) {
     amountInput.style.border = "1px solid #b80c09";
     amountInput.placeholder = "input can not be empty";
@@ -56,9 +57,11 @@ function getBudgetAmount(amount) {
     editForm.style.display = "none";
     amountInput.value = "";
   }
+  
 }
 
 function addExpenses(name, number) {
+  
   if (!name.length || !number.length) {
     expName.style.border = "1px solid #b80c09";
     expName.placeholder = "input can not be empty";
@@ -79,6 +82,8 @@ function addExpenses(name, number) {
     }, 3000);
   } else {
     const userExp = {
+      
+      
       id: id,
       name: name,
       number: parseInt(number),
@@ -89,15 +94,17 @@ function addExpenses(name, number) {
     expName.value = "";
     expNumber.value = "";
   }
+  
 }
 
 function displayExp(details) {
+  
   expValue.innerHTML = null;
   for (i = 0; i < details.length; i++) {
     expValue.innerHTML += `
     <div class="expValue" id="${details[i].id}">
       <div id="expTitleName" class="exp"><p>${details[i].name}</p></div>
-      <div id="expValueAmount" class="exp"><p> <span>$ </span> ${details[i].number}</p></div>
+      <div id="expValueAmount" class="exp"><p> <span>Naira</span> ${details[i].number}</p></div>
       <div id="edite_delete">
         <p>
           <button id="${details[i].id}" onclick="editExpDetails(${details[i].id})"> <img src="image/edit.svg" width="15" alt=""  /></button> 
@@ -109,6 +116,7 @@ function displayExp(details) {
   }
   calcExpenses();
   displayExpenses.style.display = "block";
+  
 }
 
 function calcExpenses() {
@@ -171,3 +179,7 @@ addForm.addEventListener("submit", (e) => {
   e.preventDefault();
   getBudgetAmount(amountInput.value);
 });
+
+
+
+
